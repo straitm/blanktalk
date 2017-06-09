@@ -1,0 +1,59 @@
+\documentclass[10pt]{beamer}
+
+% These together produce the same font as usual, but with copyable underscores
+\usepackage[T1]{fontenc}
+
+\usepackage{xspace}
+\usepackage[absolute, overlay]{textpos}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{xcolor}
+
+\frenchspacing
+
+\hypersetup{colorlinks}
+
+\input{commands.tex}
+
+\setbeamertemplate{navigation symbols}{} 
+\mode<presentation>
+
+\usetheme{Darmstadt}
+% default albatross beaver beetle crane dolphin dove fly lily orchid
+% rose seagull seahorse whale wolverine
+\usecolortheme{seagull}
+
+\setbeamersize{text margin left=2mm,text margin right=2mm} 
+
+\author{Matthew Strait}
+\institute{University of Minnesota}
+
+%%%%%%%%%%
+% Tricks %
+%%%%%%%%%%
+
+\newcommand{\beginbackup}{
+   \newcounter{framenumbervorappendix}
+   \setcounter{framenumbervorappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \addtocounter{framenumbervorappendix}{-\value{framenumber}}
+   \addtocounter{framenumber}{\value{framenumbervorappendix}} 
+}
+
+\newcommand{\topbit}[3]{
+  \title[#3]{#1}
+  \pdfinfo{
+     /Author (Matthew Strait)
+     /Title  (#1)
+  }
+  \date{#2}
+
+  \begin{document}
+
+  \frame{
+   \maketitle
+  }
+
+}
