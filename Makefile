@@ -11,13 +11,14 @@
 # compatibility, you must explicitly request it."
 .DELETE_ON_ERROR:
 
-name=nova-doc-20117-ligo-thoughts
+name=ligo-follow-up-talk
 
 all: $(name).pdf
 
 figures=#fig-*.png
 
 $(name).pdf: $(name).tex header.tex commands.tex $(figures)
+	pdflatex -halt-on-error $(name).tex
 	pdflatex -halt-on-error $(name).tex
 
 clean:
