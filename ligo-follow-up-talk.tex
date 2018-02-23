@@ -1,56 +1,284 @@
 \input{header.tex}
 
-\topbit{LIGO follow-up progress}{29 Aug 2017}
+\topbit{LIGO/Virgo follow-up progress}{23 Feb 2018}
        {GW, LIGO}
 
 \section{Intro}
 
-\frame{\frametitle{Outline}
+\frame{\frametitle{Introduction}
 
 \ul
 
-\item Writing the code for our LIGO follow-up
+\item LIGO/Virgo (LVC) has reported 7 gravitational wave events
 
-\item Implements plan from \href{https://nova-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=22025}{doc-22025}
+\item 6 black hole mergers (starting to be routine!)
 
-\item Testing on a randomly chosen timestamp
+\item 1 neutron star merger
 
-\item When satisfied, will turn it loose on the four LIGO events
+\item One of each with Virgo online: good pointing
+
+\item Other possible signals: supernovae, exotics
+
+\item We should report on whether we saw anything coincident
+with any of these
 
 \lu
 
 }
 
-\section{Middle}
 
-\frame{\frametitle{Examine these triggers}
+\frame{\frametitle{Black hole/black hole mergers}
+
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{fig-bhbh-nu-64.png}
+\end{center}
 
 \ul
 
-\item Near detector
+  \item LVC sensitive to O(Gpc)
+
+  \item If surrounded by gas, there might be a neutrino signal
+
+  \item Neutron star/black hole mergers are similar
+
+\lu
+
+}
+
+\frame{\frametitle{Neutron star/neutron star mergers}
+
+\begin{center}
+\includegraphics[width=\columnwidth]{fig-nsns-merger.jpg}
+\end{center}
+
+\ul
+
+\item LVC sensitive to O(Gpc)
+
+\item Similar thermal and nucleosynthesis
+neutrinos to a supernova: \href{https://arxiv.org/abs/1510.06398}{arXiv:1510.06398}
+
+  \ul
+
+    \item Not enough to see outside the galaxy
+
+    \item Galactic rate estimated at 0.01/century...
+
+  \lu
+
+\item Higher energy neutrinos from the inspiral? 
+\href{http://www.sciencedirect.com/science/article/pii/S2214404816300118}{Example paper}
+
+\lu
+
+}
+
+\frame{\frametitle{Supernovae}
+
+\begin{center}
+\includegraphics[width=0.8\columnwidth]{fig-ligo-supernova-sensitivity.png}
+\end{center}
+
+\ul
+
+  \item Large neutrino signal if it is in the galaxy
+
+  \item LIGO reach very poorly understood (\href{https://arxiv.org/abs/1605.01785}{1605.01785})
   
+  \item Model range: 130\,pc (Betelgeuse, maybe) to 740\,kpc (reaches Andromeda)
+
+  \item The paper is rather guarded, but lower end sounds more likely
+
+  \item Anyway, it's an independent SNEWS-like warning, maybe
+
+\lu
+
+}
+
+\frame{\frametitle{Misc unknown}
+
+\cols
+
+\colw{0.6}
+
+\ul
+
+  \item LIGO does a generic burst search
+
+  \item ``Every time humans have looked at the universe with a new set of `eyes' [\dots] they have found things that were unexpected''
+  
+  \item Could find something:
   \ul
 
-    \item BNB: Sometimes $\sim$0.27\% livetime for low energy events
+    \item Relatively mundane:
+      $\hcancel{whatever makes gamma ray bursts}$,
+      stellar-mass star mergers
 
-    \item Activity: 100\% live for high energy events (what's the threshold?)
+    \item Exotic, but described: oscillating cosmic strings (\href{https://arxiv.org/abs/0904.4718}{0904.4718}), domain walls
+    \item Something totally unanticipated
+  \lu
+
+\lu
+
+\colbrw{0.4}
+
+\includegraphics[width=\columnwidth]{fig-star-trek-cosmic-string.jpg}
+
+\sloc
+
+}
+
+\frame{\frametitle{Analysis Outline}
+
+\ul
+
+\item For each GW event, use the triggers that we had running
+to search for anything unusual in a $\{-500, +500\}$ second window around
+the event
+
+\item Plan written up in \href{https://nova-docdb.fnal.gov/cgi-bin/private/ShowDocument?docid=22025}{doc-22025} (soon to be updated to v2)
+
+\item Test on randomly chosen timestamps
+
+\item When satisfied, turn it loose on the LVC events
+
+\lu
+
+}
+
+\frame{\frametitle{Triggers, pt. 1}
+
+\ul
+
+ \item ND activity
+
+   \ul
+
+     \item Count triggers, tracks, contained events
+
+     \item \alert{Ready}, except for code to select within a region of the sky (ditto for all other events with pointing)
+
+   \lu
+
+  \item ND BNB
+
+    \ul
+
+      \item Provides $\sim 0.2\%$ unbiased livetime
+
+      \item Search for supernova-like events
+
+      \item Mostly a dry-run for when we trigger on GW events
+
+      \item \alert{Not ready}.  Need a Monte Carlo supernova to tune on.
+
+    \lu
+
+\lu
+
+}
+
+\frame{\frametitle{Triggers, pt. 2}
+
+\ul
+
+  \item FD 10\,Hz pulser
+
+  \ul
+
+    \item Provides 0.55\% unbiased livetime
+
+    \item Count tracks, contained GeV-scale events, supernova-like events
+
+    \item \alert{Ready}
 
   \lu
 
-\item Far detector
+  \item Slow monopole trigger
 
   \ul
 
-    \item Periodic calibration pulser, a.k.a. 10\,Hz: 0.549\% live for low energy events
+    \item Not for slow monopoles, but for another $\sim 0.9\%$ livetime(!)
 
-    \item Energy, contained vertex, Up-$\mu$, $\nu_\mu$: 100\% live for air showers, GeV neutrinos
-
-    \item Fast, slow monopole: Don't expect monopoles, but could pick up something missed
-          by the above
+    \item \alert{Ready} (same as above)
 
   \lu
 
-\item Other triggers ignored for negligible livetime and/or non-useful acceptance
+\lu
+
+}
+
+\frame{\frametitle{Triggers, pt. 3}
+
+\ul
+
+  \item Upwards-going muon
+
+  \ul
+
+    \item Look for upward-going muons
+
+    \item \alert{Ready}
+
+  \lu
+
+\lu
+
+}
+
+\frame{\frametitle{Triggers, pt. 4}
+
+\ul
+
+  \item FD Energy
+
+  \ul
+
+    \item Count triggers, triggers above two energy (ADC count) thresholds, and above two energy-per-unit-time thresholds
+
+    \item \alert{Ready}
+
+  \lu
+
+\lu
+
+}
+
+\frame{
+\begin{textblock*}{\paperwidth}(0mm, 8mm)
+\includegraphics[width=\columnwidth]{ddenergy-40MADC-run26810-26-5374.png}
+\end{textblock*}
+}
+
+
+\frame{
+\begin{textblock*}{\paperwidth}(0mm, 8mm)
+\includegraphics[width=\columnwidth]{ddenergy-3e11ADCpers-run26810-26-6270.png}
+\end{textblock*}
+}
+
+\frame{
+\begin{textblock*}{\paperwidth}(0mm, 8mm)
+\includegraphics[width=\columnwidth]{ddenergy-9e11ADCpers-run25728-63-1923.png}
+\end{textblock*}
+}
+
+\frame{\frametitle{Triggers, pt. 5}
+
+Just count triggers:
+
+\ul
+
+  \item FD Contained vertex
+  \item FD $\nu_\mu$
+  \item FD Fast monopole
+
+\lu
+
+
+Other triggers ignored for negligible livetime and/or non-useful acceptance
+
+\ul
 
 \item Would use DDsupernova if available, of course!
 
@@ -74,7 +302,7 @@ since Super-K, Borexino and KamLAND have already reported null results
   \lu
 
 \item For triggered events, not as hopeless, but only
-within phase space not excluded by Super-K
+within phase space not excluded by Super-K and IceCube
 
 \lu
 
@@ -84,37 +312,15 @@ within phase space not excluded by Super-K
 
 \ul
 
-\item Picked \mbox{2017-03-26 17:46:40.5 UTC} at random for testing
+\item Have a set of random times for testing
 
-\item Most random pulser data is not reconstructed
+\item My framework assumes nothing is reconstructed for me
 
-\item I'm running just CalHit, Slicer4D, and BreakPointFitter (and its dependencies)
+\item Set of fcls that do all necessary reconstruction on a trigger-by-trigger
+basis
 
-  \ul
+\item \href{https://github.com/straitm/lvc-coin}{https://github.com/straitm/lvc-coin}
 
-    \item O(10s) per FD trigger, but only a few files
-
-    \item Not clear how to get the full reco chain without preselection
-
-    \item Also not clear that it's needed
-
-  \lu
-
-\item Simple set of histograms:
-
-\ul
-
-  \item Raw count of hits in each second of data
-
-  \item Hits in the noise slice only
-
-  \item Count of tracks
-
-  \item Tracks with one end contained (mostly stoppers)
-
-  \item Contained tracks
-
-\lu
 
 \lu
 
@@ -226,57 +432,24 @@ within phase space not excluded by Super-K
 
 \frame{\frametitle{So far}
 
-\ul
-
-\item Alec took a look our data coincident with the first
-LIGO event in \href{http://nova-docdb.fnal.gov:8080/cgi-bin/ShowDocument?docid=14351}{doc-14351}
-
-\item Was on 2015-09-14, during shutdown.
-
-
-  \ul
-
-    \item FD was up, but ``ratty'', in Alec's words.
-
-    \item ND was running smoothly.
-
-  \lu
-
-
-\item 2nd good LIGO event on 2015-12-26 3:38:53 UTC:
-
-  \ul
-  \item Both detectors running smoothly.
-  \lu
-
-\item 3rd good LIGO event on 2017-01-04 10:11:58.6 UTC
-
-  \ul
-  \item Both detectors running smoothly.
-  \lu
-
-\item Marginal LIGO event on 2016-10-12 9:54:43 UTC
-
-  \ul
-  \item FD down ``Error in DataLogger''. 
-  \item ND ok.
-  \lu
-
-\lu
-
-}
-
-\frame{\frametitle{Black hole/black hole mergers}
-
 \begin{center}
-\includegraphics[width=0.5\columnwidth]{fig-bhbh-nu-64.png}
+\begin{tabular}{c c c c c c}
+\hline
+\hline
+Name & Time & ND & FD & Type & Pointing \\
+\hline
+
+ GW150914 & \phantom{0}9:50:45.4\phantom{00} & Good & {\color{orange}Ratty} & BH+BH & Rough \\
+LVT151012 & \phantom{0}9:54:43\phantom{.000} & Good & {\color{red}Down}  & BH+BH & Rough \\
+ GW151226 & \phantom{0}3:38:53.648           & Good & Good  & BH+BH & Rough \\
+ GW170104 & 10:11:58.6\phantom{00}           & Good & Good  & BH+BH & Rough \\
+ GW170608 & \phantom{0}2:01:16.49\phantom{0} & Good & Good  & BH+BH & Rough \\
+ GW170814 & 10:30:43.53\phantom{0}           & Good & Good  & BH+BH & Good  \\
+ GW170817 & 12:41:04.4\phantom{00}           & Good & Good  & NS+NS & Good  \\
+\hline
+\hline
+\end{tabular}
 \end{center}
-
-\ul
-
-\item .
-
-\lu
 
 }
 \backupend

@@ -8,7 +8,6 @@
 \usepackage{verbatim}
 \usepackage{graphicx}
 \usepackage{array}
-\usepackage{xcolor}
 
 \frenchspacing
 
@@ -57,3 +56,12 @@
   }
 
 }
+
+\usepackage{tikz}
+
+\newcommand{\hcancel}[1]{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[black] (tocancel.west) -- (tocancel.east);
+    }%
+}%
