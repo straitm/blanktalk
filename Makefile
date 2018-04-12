@@ -11,7 +11,7 @@
 # compatibility, you must explicitly request it."
 .DELETE_ON_ERROR:
 
-name=ligo-follow-up-talk
+name=blank-talk
 
 all: $(name).pdf
 
