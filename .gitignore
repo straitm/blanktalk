@@ -1,10 +1,10 @@
-blank-talk.aux
-blank-talk.log
-blank-talk.nav
-blank-talk.out
+*.aux
+*.log
+*.nav
+*.out
 blank-talk.pdf
-blank-talk.snm
-blank-talk.toc
+*.snm
+*.toc
 *.swp
 *.swo
 texput.log
