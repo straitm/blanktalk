@@ -15,7 +15,10 @@ name=blank-talk
 
 all: $(name).pdf
 
-figures=#fig-*.png
+figures=fig-fig.pdf
+
+fig-fig.pdf: fig-fig.C
+	root -n -b -l -q fig-fig.C
 
 $(name).pdf: $(name).tex header.tex commands.tex $(figures)
 	pdflatex -halt-on-error $(name).tex
