@@ -28,4 +28,5 @@ clean:
 	rm -f $(name).toc $(name).pdf $(name).aux $(name).log \
           $(name).spl $(name).bbl $(name).blg \
           $(name).nav $(name).out $(name).snm \
+					$(name).brf \
           tmp* texput.log
